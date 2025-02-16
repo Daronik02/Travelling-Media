@@ -1,25 +1,95 @@
+
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Italianno&family=Pacifico&display=swap');
 
 * {
-    padding: 2 px;
-    margin: 0 px;
+    padding: 2px;
+    margin: 0px;
 }
 
-.body{
-    padding: 14px;
+.berkshire-swash-regular {
+    font-family: "Berkshire Swash", serif;
+    font-weight: 400;
+    font-style: normal;
 }
+
+.italianno-regular {
+    font-family: "Italianno", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.pacifico-regular {
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* nav- bar */
+
 
 .Nav {
-    height: 40px;
-    padding: 17px;
-    background-color: aliceblue;
+    height: 54px;
+    border-radius: 15px;
+    background-color: rgb(128, 240, 225);
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    cursor: pointer;
 }
 
-.Nav ul {
-    display: inline-flex;
+/*          Logo Area    */
+.logo {
+    width: 25%;
+    font-size: 32px;
+    font-family: Pacifico;
+    display: flex;
+    align-items: center;
+    text-decoration: underline;
+    padding-left: 44px;
+}
+
+
+/*  Tabs Area */
+
+.tabs {
+    width: 40%;
+    font-size: 16px;
+}
+
+.tabs ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
     justify-content: space-evenly;
+}
+
+.tabs li {
+    font-family: Berkshire Swash;
+}
+
+/*      Search and info area   */
+
+.prop {
+    width: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.search {
+    width: 60%;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+input,
+#searchbtn {
+    padding: 5px;
+    margin: 12px;
+    font-size: 14px;
+    border-radius: 20px;
+    text-align: center;
 }
