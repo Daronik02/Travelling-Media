@@ -1,10 +1,11 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import App from './App.jsx'
+import AutoSlider from './ImageSlider.jsx';
+
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <AutoSlider />
   </StrictMode>,
 )
