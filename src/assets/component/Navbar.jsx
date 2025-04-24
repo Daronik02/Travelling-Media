@@ -1,55 +1,69 @@
-import React from "react";
+import { useState, useEffect } from 'react';
+import { FaSun, FaMoon, FaSearch, FaQuestionCircle, FaUserCircle, FaTimes } from 'react-icons/fa';
 
 const Navbar = () => {
+  const [darkMode, setDarkMode] = useState(false);
+  const [searchText, setSearchText] = useState("");
+
+  // Toggle theme
+  const toggleTheme = () => {
+    setDarkMode(!darkMode);
+    document.documentElement.classList.toggle('dark');
+  };
+
+  const clearSearch = () => {
+    setSearchText("");
+  };
+
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
-      <div className="container-fluid">
-        <a className="navbar-brand" href="#">Navbar</a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
+    <nav className="flex bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 text-indigo px-6 py-2 shadow-md items-center justify-between">
+      {/* Left - Logo */}
+      <div className="basis-[20%] flex items-center justify-start">
+        <div className="text-4xl font-calligraphy">Travelling Media</div>
+      </div>
+
+      {/* Center - Tabs */}
+      <div className="basis-[50%] flex items-center justify-center gap-6 text-md font-medium">
+        <button className="hover:underline">HOME</button>
+        <button className="hover:underline">BLOG</button>
+        <button className="hover:underline">My-journey</button>
+        <button className="hover:underline">Nearby's</button>
+      </div>
+
+      {/* Right - Actions */}
+      <div className="basis-[30%] flex items-center justify-end space-x-9">
+        {/* 🌗 Theme Toggle Button */}
+        <button onClick={toggleTheme} className="bg-white text-indigo-500 w-10 h-10 flex items-center justify-center rounded-full text-xl">
+          {darkMode ? <FaSun /> : <FaMoon />}
         </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">Link</a>
-            </li>
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Dropdown
-              </a>
-              <ul className="dropdown-menu">
-                <li><a className="dropdown-item" href="#">Action</a></li>
-                <li><a className="dropdown-item" href="#">Another action</a></li>
-                <li><hr className="dropdown-divider" /></li>
-                <li><a className="dropdown-item" href="#">Something else here</a></li>
-              </ul>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link disabled" aria-disabled="true">Disabled</a>
-            </li>
-          </ul>
-          <form className="d-flex" role="search">
-            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-            <button className="btn btn-outline-success" type="submit"style={{width:"100px"}}>Search</button>
-          </form>
+
+        <div className="relative">
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+            className="px-3 py-1 pr-8 rounded-md text-black focus:outline-none"
+          />
+          {searchText && (
+            <button
+              onClick={clearSearch}
+              className="absolute right-1 top-1/2 transform -translate-y-1/2 text-white-500"
+            >
+              <FaTimes />
+            </button>
+          )}
         </div>
+
+        <button className="bg-white text-indigo-500 w-10 h-10 flex items-center justify-center rounded-full text-xl">
+          <FaSearch />
+        </button>
+        <button className="bg-white text-indigo-500 w-10 h-10 flex items-center justify-center rounded-full text-xl">
+          <FaQuestionCircle />
+        </button>
+        <button className="bg-white text-indigo-500 w-10 h-10 flex items-center justify-center rounded-full text-xl">
+          <FaUserCircle />
+        </button>
       </div>
     </nav>
   );

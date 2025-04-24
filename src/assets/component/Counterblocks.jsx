@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 
 const CounterBlock = ({ title, end, duration = 2 }) => {
   const [count, setCount] = useState(0);
-  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     let start = 0;
@@ -15,19 +14,10 @@ const CounterBlock = ({ title, end, duration = 2 }) => {
     return () => clearInterval(counter);
   }, [end, duration]);
 
-  useEffect(() => {
-    const timer = setTimeout(() => setVisible(true), 100);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
-    <div
-      className={` items-center justify-center bg-white rounded-2xl shadow-lg p-8 text-center transition-opacity duration-700 ease-in-out ${
-        visible ? "opacity-100" : "opacity-0"
-      }`}
-    >
-      <div className="text-gray-700 mt-3 text-xl font-medium">{title}</div>
-      <div className="text-5xl font-extrabold text-blue-600">{count}</div>
+    <div className="bg-white shadow-xl rounded-xl px-8 py-6 text-center w-64">
+      <div className="text-lg text-gray-700 font-medium">{title}</div>
+      <div className="text-4xl font-extrabold text-blue-700 mt-1">{count}</div>
     </div>
   );
 };
@@ -40,10 +30,10 @@ const Counterblocks = () => {
   ];
 
   return (
-    <div className="min-h-screen flexbox items-center justify-center bg-beige px-4 py-16">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 w-full max-w-6xl">
-        {counters.map((item, index) => (
-          <CounterBlock key={index} title={item.title} end={item.end} />
+    <div className="min-m-screen bg-[#f5f5dc] py-20 px-6 flex justify-center items-center">
+      <div className="flex flex-row flex-wrap gap-12 justify-center">
+        {counters.map((item, idx) => (
+          <CounterBlock key={idx} title={item.title} end={item.end} />
         ))}
       </div>
     </div>
